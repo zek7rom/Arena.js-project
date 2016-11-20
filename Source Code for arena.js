@@ -1,6 +1,7 @@
 
 
 
+
 /* Step 1: Once the user joins the game, there will be a pop-up alert telling he or she to pick either charmander, squirtle or bulbasaur.
    Step 2: Now that he or she has chosen their pokemon they will be a pop-up alert telling user he or she has successfully chosen a mon/and now they will be placed in floor 1.
    Step 3: Now that user is in floor 1 he or she will battle a pokemon; floor 1-5 will probably has pokemon from the lvl 1 to 7 range; If they win the battle he or she will move on to floor 2.
@@ -67,3 +68,5 @@ playerChoice = prompt('choose charmander, bulbasaur, squirtle, torchic, treeko, 
         physspec: 'special move',
         id: 'scratch',
     };
+   let charmander = { moveset:[ember, scratch] };
+   
