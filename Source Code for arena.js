@@ -1,4 +1,4 @@
-
+ 
 
 /* Step 1: Once the user joins the game, there will be a pop-up alert telling he or she to pick either charmander, squirtle or bulbasaur.
    Step 2: Now that he or she has chosen their pokemon they will be a pop-up alert telling user he or she has successfully chosen a mon/and now they will be placed in floor 1.
@@ -35,6 +35,7 @@ playerChoice = prompt('choose charmander, bulbasaur, squirtle, torchic, treeko, 
             alert('The pokemon you have chosen is not one of the selected starters above');
     }
     
+   
     
     
  class charmander {
@@ -46,3 +47,11 @@ playerChoice = prompt('choose charmander, bulbasaur, squirtle, torchic, treeko, 
          
      }
  }
+
+   let Ember = { 
+        damage: '65',
+        type: 'fire',
+        physspec: 'physical move',
+        id: 'Ember',
+    };
+    
