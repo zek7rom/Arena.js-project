@@ -68,5 +68,5 @@ playerChoice = prompt('choose charmander, bulbasaur, squirtle, torchic, treeko, 
         physspec: 'special move',
         id: 'scratch',
     };
-   let charmander = { moveset:[ember, scratch] };
+  
    
