@@ -33,18 +33,18 @@ playerChoice = prompt('choose charmander, bulbasaur, squirtle, torchic, treeko, 
             alert('you have succesfully chosen mudkip');
             break;
         default:
-            alert('The pokemon you have chosen is not one of the selected starters above');
+           playerChoice = 'pikachu'
     }
     
    
     
     
- class charmander {
+ class pokemon {
      constructor(healthpoints, name, type) {
          this.healthpoints = healthpoints;
          this.name = name;
-         this.type = fire;
-         console.log(charmander === this.healthpoints);
+         this.type = type;
+         
          
      }
  }
@@ -53,12 +53,12 @@ playerChoice = prompt('choose charmander, bulbasaur, squirtle, torchic, treeko, 
         damage: '65',
         type: 'fire',
         physspec: 'physical move',
-        id: 'Ember',
+        id: 'ember',
     };
    
      let Scratch = {
         damage: '45',
         type: 'normal',
         physspec: 'special move',
-        id: 'Scratch',
+        id: 'scratch',
     };
