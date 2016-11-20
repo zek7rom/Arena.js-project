@@ -40,10 +40,15 @@ playerChoice = prompt('choose charmander, bulbasaur, squirtle, torchic, treeko, 
     
     
  class pokemon {
-     constructor(healthpoints, name, type) {
+     constructor(healthpoints, name, type, level, gender) {
          this.healthpoints = healthpoints;
          this.name = name;
          this.type = type;
+         this.level = level;
+         this.gender = gender;
+         this.exp = 0;
+     }
+      checkLevelUp() {
          
          
      }
