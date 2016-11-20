@@ -20,7 +20,8 @@ playerChoice = prompt('choose charmander, bulbasaur, squirtle, torchic, treeko, 
             break;
         case 'bulbasaur':
             alert('you have sucessfully chosen bulbasaur');
-            break;
+
+         break;
         case 'squirtle':
             alert('you have sucessfully chosen squirtle');
             break;
@@ -68,5 +69,5 @@ playerChoice = prompt('choose charmander, bulbasaur, squirtle, torchic, treeko, 
         physspec: 'special move',
         id: 'scratch',
     };
-  
+   let charmander = { moveset: [ember, scratch] };
    
