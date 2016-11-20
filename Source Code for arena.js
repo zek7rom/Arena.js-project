@@ -1,4 +1,5 @@
- 
+
+
 
 /* Step 1: Once the user joins the game, there will be a pop-up alert telling he or she to pick either charmander, squirtle or bulbasaur.
    Step 2: Now that he or she has chosen their pokemon they will be a pop-up alert telling user he or she has successfully chosen a mon/and now they will be placed in floor 1.
@@ -54,4 +55,10 @@ playerChoice = prompt('choose charmander, bulbasaur, squirtle, torchic, treeko, 
         physspec: 'physical move',
         id: 'Ember',
     };
-    
+   
+     let Scratch = {
+        damage: '45',
+        type: 'normal',
+        physspec: 'special move',
+        id: 'Scratch',
+    };
