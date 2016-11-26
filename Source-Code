@@ -1,0 +1,143 @@
+
+
+/*
+ * Step 1: Once the user joins the game, there will be a pop-up alert telling he or she to pick either charmander, squirtle or bulbasaur.
+ * Step 2: Now that he or she has chosen their pokemon they will be a pop-up alert telling user he or she has successfully chosen a mon/and now they will be placed in floor 1.
+ * Step 3: Now that user is in floor 1 he or she will battle a pokemon; floor 1-5 will probably has pokemon from the lvl 1 to 7 range; If they win the battle he or she will move on to floor 2.
+ * Step 4: this process will continue until they reach floor 15; Floor 15 is the max floor for now, since this is a newly developed game, and i'm still new to javascript so this will be slappy.
+ * Step 5: I didn't mention but as your pokemon continues to battle they will level up; maxLVL === null as i don't yet know the max level, it will probably be level 20.
+ */
+ 
+/*created by Zek7rom and contributions from Mystifi and HoeenHero :D */
+  
+'use strict';
+
+let buffer = 'You have successfully chosen ';
+let choices = ['charmander', 'bulbasaur', 'squirtle', 'torchic', 'treecko', 'mudkip', 'pikachu'];
+
+let playerChoice = prompt('Choose one of these Pokemon: ' + choices.join(', ') + '.');
+
+if (choices.indexOf(playerChoice) < 0) {
+    // The Pokemon that was selected was not in the specified choices.
+    // However, we can be lazy and just assign a default Pokemon to playerChoice.
+    playerChoice = 'pikachu';
+    alert('Pokemon not found; defaulting to Pikachu instead...');
+}
+
+buffer += playerChoice + '.';
+alert(buffer);
+   
+    
+ class Pokemon { 
+    constructor(healthpoints, name, type, level, gender, stats, moves) {
+        this.healthpoints = healthpoints;
+        this.name = name;
+        this.type = type;
+        
+        this.level = level; //You could set this to 1
+        if (this.level > 100) this.level = 100; // Make sure that the Pokemon's level cannot be set over 100
+        
+        this.gender = gender;
+        this.exp = 0;
+        this.stats = stats;
+        this.moves = moves;
+        if (!this.moves.length) throw new Error("You need to include at least one move for the Pokemon to use.");
+    }
+     
+    checkLevelUp() {
+        //write function here, uh what? im a bit lost
+        //this.level; //works here already cause its a class
+        if (this.level > 99) return false; //Pokemon is level 100 and cannot level up
+        //Write your checks here then if it can level up
+         
+        return true;
+         
+    }
+    
+    onLevelUp() {
+        this.level++;
+        for (let key in this.stats) {
+            this.stats[key] += Math.floor(Math.random() * 3); // This allows some stats to raise by 2 or 3, like it does in the games (however, not based on nature/IVs/EVs)
+        }
+    }
+}
+ 
+let Ember = { 
+    damage: '65',
+    type: 'fire',
+    physspec: 'physical move',
+    id: 'ember', 
+};
+
+let Scratch = {
+    damage: '45',
+    type: 'normal',
+    physspec: 'special move',
+    id: 'scratch', 
+};
+
+let charmanderMoves = [Ember, Scratch];//how do u think like that lol
+
+let Charmander = new Pokemon(30, 'Charmander', ['Fire'], 1, 'Male', {atk: '35', def: '40', spatk: '55', spdef: '50', spe: '64'}, charmanderMoves); //change the 1 to what level you want
+if (Charmander.checkLevelUp()) {
+    Charmander.level++;
+    alert(Charmander.name + ' leveled up to level ' + Charmander.level + '!');//????????? what the hell is that? // Read the js and try to figure it out//kk
+}
+
+if(Charmander.checkLevelUp())
+   Charmander.onLevelUp();//could i also add
+  //to state charmanders stats will increase by one each time? //This wont work, stats is an object remember? also the increase handler is in onLevelUp()//oh ok
+   alert(Charmander.name + 'stats have increased to' + Charmander.stats + '.');
+    
+
+if (Charmander.level === 15) {
+    alert(Charmander.name + ' Has evolved into charmeleon and is ' + Charmander.level + '!');//btw would this work  //change its name too so it dosent say charmander in the future
+}
+
+let Charmeleon = new Pokemon(85, 'charmeleon', ['Fire'], 15, 'Male', {hp: 58, atk: 64, def: 58, spatk: 80, spDef: 65, spe: 80});
+
+// Just so you know, when you make a new Pokemon out of the classes, so far neither of the Pokemon have moves. For example:
+// let Charmander = new Pokemon(30, 'Charmander', ['Fire'], 1, 'Male', {atk: '35', def: '40', spa: '55', spD: '50', spe: '64'}); //change the 1 to what level you want
+// There are no moves passed into this. You should pass an extra parameter and add it to the class.
+//Serp read that too ^
+
+// uhh lemme test something really quickly// why would i delete it lol I don't know, I just got very paranoid. My train of thought isn't the best, lol
+// NOTE: This is a VERY messy implementation.
+// TODO: maybe move all of the actual tests to a new function, where the first parameter is the Pokemon object and the second parameter is the move attempted to be learned?
+//you're a legit genius wtfmam lmfaoo how did u think of this so fast i would never thought of this xaa/you and hoeen is smart af
+// It just takes a lot of practice and knowing the language. If you have an idea of what you want to do, just know a really easy way to get JavaScript to know what you are doing and make it easy. I'm
+// just seeing if: 1. the Pokemon's level is in `moveset`. If it is, save the move to a variable (`newMove`). Does the user want `newMove`? If yes, delete a move and add newMove. If not, say the Pokemon
+// stopped trying to learn it.
+//mystifi what does !~ mean?
+// I told you this. It just checks through the ENTIRE array to see if the array has an index of the specific element over -1. However, you shouldn't use that since it's a little more advanced. (It's not standard practice.)
+//
+// NOTE NUMBER TWO: This checks for STRINGS, and the moves the Pokemon knows are objects. Don't use this until <that> problem is worked out.
+//
+// So, this actually works. It's messy, but it works. However, it needs to be fixed up to account for objects and not strings. I'm too lazy to do this right now so I'll do it later.
+let moveset = {1: 'Dragon Rage', 5: 'Ember', 10: 'Fire Fang'};
+if (Charmander.level in moveset) {
+    let newMove = moveset[Charmander.level];
+    if (!~Charmander.moves.indexOf(newMove)) {
+        if (Charmander.moves.length < 4) {
+            Charmander.moves.push(newMove);
+            alert(Charmander.name + " learned the move " + newMove + "!");
+        } else {
+            alert(Charmander.name + " is trying to learn the move " + newMove + ".");
+            let request = prompt("Forget a move so that " + newMove + " can be learned?", "Reply with yes or no.").toLowerCase();
+            switch (request) {
+                case 'y': case 'yes':
+                    let oldMove = prompt("Which move should be deleted?").toLowerCase();
+                    Charmander.moves.splice(Charmander.moves.indexOf(oldMove), 1);
+                    Charmander.moves.push(newMove);
+                    alert("1...2... and 3! " + Charmander.name + " successfully forgot " + oldMove.capitalize() + ", and learned " + newMove + "!");
+                    break;
+                case 'n': case 'no':
+                    alert(Charmander.name + " stopped trying to learn " + newMove + ".");
+                    break;
+                default:
+                    // TODO: make this a function so that in the case of a bad answer the process can reloop through the question process
+                    prompt(request + " is not a valid response. Please answer with yes or no.");
+            }
+        }
+    }//hoeen u there?
+}
